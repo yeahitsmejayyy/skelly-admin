@@ -1,7 +1,7 @@
 
 ![Skelly Admin Banner](./image.png)
 
-# Skelly Admin
+# skelly-admin
 
 > A clean, typed, no-nonsense admin frontend for product-first builders.
 
