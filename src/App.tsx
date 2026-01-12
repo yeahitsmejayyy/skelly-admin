@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Login } from "./routes/login";
+import Login from "./routes/login";
 import { Dashboard } from "./routes/dashboard";
 
 function App() {
