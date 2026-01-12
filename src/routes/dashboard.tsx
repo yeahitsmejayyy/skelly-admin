@@ -1,4 +1,5 @@
-import { AppSidebar } from "@/components/layout/app-sidebar";
+import { AppNav } from "@/components/layout/app-nav";
+import { AppToolbar } from "@/components/layout/app-toolbar";
 import {
     SidebarProvider,
     SidebarInset,
@@ -11,20 +12,22 @@ export function Dashboard() {
     return (
         <SidebarProvider>
             <div className="flex h-svh">
-                <AppSidebar />
+                <AppNav />
 
-                <SidebarInset className="flex flex-col p-6">
-                    <h1 className="mb-4 text-xl font-bold">Dashboard</h1>
+                <SidebarInset className="flex flex-col">
+                    <AppToolbar title="Dashboard" />
 
-                    {healthCheck.data ? (
-                        <pre className="text-sm text-neutral-400">
-                            {JSON.stringify(healthCheck.data, null, 2)}
-                        </pre>
-                    ) : (
-                        <pre className="text-sm text-neutral-400">
-                            ❌ Health check failed with Backend
-                        </pre>
-                    )}
+                    <main className="flex-1 p-6">
+                        {healthCheck.data ? (
+                            <pre className="text-sm text-neutral-400">
+                                {JSON.stringify(healthCheck.data, null, 2)}
+                            </pre>
+                        ) : (
+                            <pre className="text-sm text-neutral-400">
+                                ❌ Health check failed with Backend
+                            </pre>
+                        )}
+                    </main>
                 </SidebarInset>
             </div>
         </SidebarProvider>

@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LayoutDashboard } from "lucide-react";
 
-export function AppSidebar() {
+export function AppNav() {
     return (
         <Sidebar>
             <SidebarHeader className="border-b px-4 py-4">
