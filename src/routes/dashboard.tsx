@@ -11,7 +11,7 @@ export function Dashboard() {
 
     return (
         <SidebarProvider>
-            <div className="flex h-svh">
+            <div className="w-full flex h-svh">
                 <AppNav />
 
                 <SidebarInset className="flex flex-col">
