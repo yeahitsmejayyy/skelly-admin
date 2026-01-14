@@ -7,11 +7,15 @@ import {
     SidebarMenuItem,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LayoutDashboard } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { UserMenu } from "./user-menu";
 
 export function AppNav() {
+    const navigate = useNavigate();
+
     return (
         <Sidebar>
             <SidebarHeader className="border-b px-4 py-4">
@@ -39,7 +43,17 @@ export function AppNav() {
             </SidebarContent>
 
             <SidebarFooter className="border-t p-3">
-                <ModeToggle />
+                <UserMenu
+                    username="yeahitsmejayyy"
+                    email="hello@itsjayyy.com"
+                    avatarSrc="/avatar.png"
+                    onSettings={() => {
+                        navigate("/settings");
+                    }}
+                    onLogout={() => {
+                        navigate("/login"); // or "/"
+                    }}
+                />
             </SidebarFooter>
         </Sidebar>
     );
