@@ -12,14 +12,16 @@ export default function Login() {
         ```
       */}
             <div className="w-full h-screen flex items-center justify-center">
-                <div className="w-325 flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-                    <div className="mx-auto">
-                        <span className="w-10.5 h-10.5 flex items-center justify-center bg-neutral-950 dark:bg-neutral-900 rounded-md">💀</span>
-                    </div>
-                    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
-                            Sign in to your account
-                        </h2>
+                <div className="w-325 flex min-h-full flex-col justify-start px-6 py-12 lg:px-8 pt-55">
+                    <div className="flex flex-col gap-y-0">
+                        <div className="mx-auto">
+                            <span className="w-10.5 h-10.5 flex items-center justify-center bg-neutral-950 dark:bg-neutral-900 rounded-md">💀</span>
+                        </div>
+                        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                            <h2 className="mt-5 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
+                                Sign in to your account
+                            </h2>
+                        </div>
                     </div>
 
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
