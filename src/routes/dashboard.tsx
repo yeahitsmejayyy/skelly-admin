@@ -1,3 +1,4 @@
+import { AppBreadcrumb } from "@/components/layout/app-breadcrumb";
 import { AppNav } from "@/components/layout/app-nav";
 import { AppToolbar } from "@/components/layout/app-toolbar";
 import {
@@ -16,6 +17,12 @@ export function Dashboard() {
 
                 <SidebarInset className="flex flex-col">
                     <AppToolbar title="Dashboard" />
+                    <AppBreadcrumb
+                        items={[
+                            { label: "Home", href: "/" },
+                            { label: "Dashboard" },
+                        ]}
+                    />
 
                     <main className="flex-1 p-6">
                         {healthCheck.data ? (
