@@ -8,9 +8,9 @@ import {
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ModeToggle } from "@/components/mode-toggle";
 import { LayoutDashboard } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import type { AppNavSection } from "@/types/app-nav";
+
 import { UserMenu } from "./user-menu";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useEffect, useState } from "react";
@@ -25,6 +25,22 @@ export function AppNav({ variant = "default" }: AppNavProps) {
     const navigate = useNavigate();
     const { state } = useSidebar();
     const [showText, setShowText] = useState(state === "expanded");
+
+    const APP_NAV: AppNavSection[] = [
+        {
+            id: "main",
+            items: [
+                {
+                    id: "dashboard",
+                    label: "Dashboard",
+                    to: "/dashboard",
+                    icon: LayoutDashboard,
+                    tooltip: "Dashboard",
+                }
+            ],
+        },
+    ];
+
 
     useEffect(() => {
         if (state === "expanded") {
@@ -77,43 +93,48 @@ export function AppNav({ variant = "default" }: AppNavProps) {
             >
 
                 <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton
-                            asChild
-                            tooltip="Dashboard"
-                        >
-                            <NavLink
-                                to="/dashboard"
-                                className="
-  flex items-center gap-2
-  pl-2 pr-4
-  group-data-[collapsible=icon]:pl-4
-  group-data-[collapsible=icon]:pr-0
-"
+                    {APP_NAV.map((section) =>
+                        section.items.map((item) => {
+                            const Icon = item.icon;
 
-                            >
-                                <LayoutDashboard className="h-4 w-4" />
-                                {showText && (
-                                    <span
-                                        className="
-      animate-in
-      fade-in
-      slide-in-from-left-1
-      duration-200
-    "
+                            return (
+                                <SidebarMenuItem key={item.id}>
+                                    <SidebarMenuButton
+                                        asChild
+                                        tooltip={item.tooltip}
+                                        disabled={item.disabled}
                                     >
-                                        Dashboard
-                                    </span>
-                                )}
-                            </NavLink>
+                                        <NavLink
+                                            to={item.to}
+                                            className="
+                flex items-center gap-2
+                pl-2 pr-4
+                group-data-[collapsible=icon]:pl-4
+                group-data-[collapsible=icon]:pr-0
+              "
+                                        >
+                                            <Icon className="h-4 w-4 shrink-0" />
 
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-
-
-
-                    {/* Future items go here */}
+                                            {showText && (
+                                                <span
+                                                    className="
+                    animate-in
+                    fade-in
+                    slide-in-from-left-1
+                    duration-200
+                  "
+                                                >
+                                                    {item.label}
+                                                </span>
+                                            )}
+                                        </NavLink>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            );
+                        })
+                    )}
                 </SidebarMenu>
+
             </SidebarContent>
 
             <SidebarFooter
