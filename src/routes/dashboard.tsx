@@ -1,6 +1,7 @@
 import { AppBreadcrumb } from "@/components/layout/app-breadcrumb";
 import { AppNav } from "@/components/layout/app-nav";
 import { AppToolbar } from "@/components/layout/app-toolbar";
+import { HealthStatusWidget } from "@/components/dashboard/health-status-widget";
 import {
     SidebarProvider,
     SidebarInset,
@@ -8,7 +9,6 @@ import {
 import { trpc } from "@/lib/trpc";
 
 export function Dashboard() {
-    const healthCheck = trpc.health.check.useQuery();
 
     return (
         <SidebarProvider>
@@ -25,15 +25,7 @@ export function Dashboard() {
                     />
 
                     <main className="flex-1 p-6">
-                        {healthCheck.data ? (
-                            <pre className="text-sm text-neutral-400">
-                                {JSON.stringify(healthCheck.data, null, 2)}
-                            </pre>
-                        ) : (
-                            <pre className="text-sm text-neutral-400">
-                                ❌ Health check failed with Backend
-                            </pre>
-                        )}
+                        <HealthStatusWidget />
                     </main>
                 </SidebarInset>
             </div>
