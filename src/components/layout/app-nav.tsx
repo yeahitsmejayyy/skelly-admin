@@ -56,9 +56,14 @@ export function AppNav({ variant = "default" }: AppNavProps) {
     return (
         <Sidebar collapsible={variant === "icon" ? "icon" : "offcanvas"}>
             <SidebarHeader className="px-4 py-4 border-b">
-                <div
+                <NavLink
+                    to="/dashboard"
                     className="
-      flex items-center gap-2"
+      flex items-center gap-2
+      hover:opacity-60
+      transition-colors
+    "
+                    aria-label="Go to dashboard"
                 >
                     <span className="shrink-0 flex h-8 w-8 items-center justify-center rounded-md border">
                         💀
@@ -80,7 +85,8 @@ export function AppNav({ variant = "default" }: AppNavProps) {
 
 
 
-                </div>
+                </NavLink>
+
             </SidebarHeader>
 
 
