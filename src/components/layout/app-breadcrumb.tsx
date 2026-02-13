@@ -20,7 +20,7 @@ export function AppBreadcrumb({ items }: AppBreadcrumbProps) {
     if (!items.length) return null;
 
     return (
-        <div className="px-6 py-2 border-b border-border">
+        <div className="px-6 py-4">
             <Breadcrumb>
                 <BreadcrumbList>
                     {items.map((item, index) => {
