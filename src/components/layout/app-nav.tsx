@@ -7,7 +7,7 @@ import {
     SidebarMenuItem,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { LayoutDashboard } from "lucide-react";
 import type { AppNavSection } from "@/types/app-nav";
 
@@ -23,8 +23,13 @@ type AppNavProps = {
 
 export function AppNav({ variant = "default" }: AppNavProps) {
     const navigate = useNavigate();
-    const { state } = useSidebar();
+    const location = useLocation();
+    const { state, setOpenMobile } = useSidebar();
     const [showText, setShowText] = useState(state === "expanded");
+
+    useEffect(() => {
+        setOpenMobile(false);
+    }, [location.pathname]);
 
     const APP_NAV: AppNavSection[] = [
         {
