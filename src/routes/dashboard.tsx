@@ -1,4 +1,3 @@
-import { AppBreadcrumb } from "@/components/layout/app-breadcrumb";
 import { AppNav } from "@/components/layout/app-nav";
 import { AppToolbar } from "@/components/layout/app-toolbar";
 import { HealthStatusWidget } from "@/components/dashboard/health-status-widget";
@@ -16,9 +15,8 @@ export function Dashboard() {
                 <AppNav variant="icon" />
 
                 <SidebarInset className="flex flex-col">
-                    <AppToolbar title="Dashboard" />
-                    <AppBreadcrumb
-                        items={[
+                    <AppToolbar
+                        breadcrumbs={[
                             { label: "Home", href: "/" },
                             { label: "Dashboard" },
                         ]}
