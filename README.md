@@ -5,6 +5,15 @@
 
 > A clean, typed, no-nonsense admin frontend for product-first builders.
 
+<p align="center">
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-FF6100?style=flat-square"></a>
+  <img alt="React 19" src="https://img.shields.io/badge/React-19-FF6100?style=flat-square&logo=react&logoColor=white">
+  <img alt="Vite 7" src="https://img.shields.io/badge/Vite-7-FF6100?style=flat-square&logo=vite&logoColor=white">
+  <img alt="TypeScript 5.9" src="https://img.shields.io/badge/TypeScript-5.9-FF6100?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="Tailwind CSS 4" src="https://img.shields.io/badge/Tailwind%20CSS-4-FF6100?style=flat-square&logo=tailwindcss&logoColor=white">
+  <img alt="tRPC 11" src="https://img.shields.io/badge/tRPC-11-FF6100?style=flat-square&logo=trpc&logoColor=white">
+</p>
+
 Skelly Admin exists to answer a different question than the backend:
 
 **“Can I see and control my product without fighting my frontend?”**
