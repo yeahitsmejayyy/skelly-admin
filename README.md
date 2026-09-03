@@ -61,7 +61,6 @@ If you want to:
 
 * Add auth
 * Replace the UI kit
-* Introduce routing
 * Split roles and permissions
 * Turn this into a full dashboard
 
@@ -90,11 +89,16 @@ skelly-admin/
 ├─ src/
 │  ├─ components/
 │  │  ├─ ui/                # shadcn components
+│  │  ├─ layout/            # app shell, sidebar, toolbar
+│  │  ├─ dashboard/         # dashboard widgets
 │  │  ├─ mode-toggle.tsx    # theme switcher
 │  │  └─ theme-provider.tsx
+│  ├─ routes/               # login, dashboard, settings
+│  ├─ hooks/
+│  ├─ types/                # nav config types
 │  ├─ lib/
 │  │  └─ trpc.ts            # typed tRPC client
-│  ├─ App.tsx               # app entry UI
+│  ├─ App.tsx               # routes
 │  ├─ main.tsx              # providers + bootstrap
 │  └─ index.css
 ├─ public/
@@ -116,7 +120,12 @@ AppRouter -> @trpc/react-query -> UI
 ```
 
 If the backend changes, the frontend knows.
-If types break, the build breaks.
+
+This expects **skelly-backend checked out beside this repo** and its dependencies
+installed — `src/lib/trpc.ts` imports `AppRouter` from `../../../skelly-backend`.
+
+Note that `bun run build` does not typecheck: it is a bare `vite build`, so type
+errors are stripped rather than raised. Run `bun run typecheck` to see them.
 
 This is intentional.
 
@@ -129,8 +138,8 @@ Make sure the backend is running first.
 Then:
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 Admin app:
