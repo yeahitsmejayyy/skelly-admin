@@ -97,11 +97,14 @@ skelly-admin/
 │  ├─ hooks/
 │  ├─ types/                # nav config types
 │  ├─ lib/
+│  │  ├─ app-router.d.ts    # generated backend contract (bun run sync:types)
 │  │  └─ trpc.ts            # typed tRPC client
 │  ├─ App.tsx               # routes
 │  ├─ main.tsx              # providers + bootstrap
 │  └─ index.css
 ├─ public/
+├─ scripts/
+│  └─ sync-types.ts        # refreshes app-router.d.ts from skelly-backend
 ├─ package.json
 ├─ vite.config.ts
 └─ README.md
@@ -119,15 +122,25 @@ Types flow from the backend router:
 AppRouter -> @trpc/react-query -> UI
 ```
 
-If the backend changes, the frontend knows.
+If the backend changes, sync and the frontend knows. If types break, the build breaks.
 
-This expects **skelly-backend checked out beside this repo** and its dependencies
-installed — `src/lib/trpc.ts` imports `AppRouter` from `../../../skelly-backend`.
+The `AppRouter` type lives in this repo as a generated file, `src/lib/app-router.d.ts`,
+so a fresh clone typechecks and builds with no backend anywhere near it. It is not live:
+when the backend's router changes, refresh it and commit the result.
 
-Note that `bun run build` does not typecheck: it is a bare `vite build`, so type
-errors are stripped rather than raised. Run `bun run typecheck` to see them.
+```bash
+bun run sync:types   # emits the contract from ../skelly-backend and copies it in
+```
 
-This is intentional.
+Set `SKELLY_BACKEND` to the backend's path if it is not checked out beside this repo.
+
+The trade: a generated file can go stale. This swaps "always live, often broken" for
+"explicitly refreshed, always green". The backend's own `bun run build` emits the same
+file, so the refresh is one copy away from automatic — but someone can still forget, and
+the types are stale until the next sync.
+
+`bun run build` runs `tsc -b` before Vite, so a type error fails the build instead of
+being stripped.
 
 ---
 
