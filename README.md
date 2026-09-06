@@ -233,3 +233,12 @@ that’s correct.
 
 Build the product first.
 Polish later.
+
+---
+
+## Project Docs
+
+* [ARCHITECTURE.md](./ARCHITECTURE.md) - how it is put together and why
+* [SECURITY.md](./SECURITY.md) - what it touches, and what it is not
+* [LICENSE](./LICENSE) - MIT
+* [Skellys](https://github.com/yeahitsmejayyy/skellys) - install all three as agent skills
